@@ -1,0 +1,20 @@
+{
+    "files": [
+        "Components/AnaEkran.qml",
+        "Components/AnaEkranState.qml",
+        "Components/AnimatedButton.qml",
+        "Components/BackgroundState.qml",
+        "Components/Baslatici.qml",
+        "Components/IconTextComp.qml",
+        "Components/LineComp.qml",
+        "Components/NewContainer.qml",
+        "Components/NewWindow.qml",
+        "Components/StateTransition.qml",
+        "Components/TopTextComp.qml",
+        "Components/compenent.qml",
+        "Components/havadurumu.pyproject",
+        "Components/main.qml",
+        "main.py",
+        "variable.js"
+    ]
+}
