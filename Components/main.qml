@@ -44,7 +44,7 @@ Item {
         id: backgroundImage
         width: parent.width
         height: parent.height
-        source: 'images/background_0.jpg'
+        source: '../images/background_0.jpg'
         Rectangle {
             width: parent.width
             height: parent.height
@@ -163,12 +163,12 @@ Item {
                 IconTextComp {
                     id: sunRise
                     textValue: ''
-                    sourceValue: 'images/sunrise.png'
+                    sourceValue: '../images/sunrise.png'
                 }
                 IconTextComp {
                     id: sunDown
                     textValue: ''
-                    sourceValue: 'images/sunset.png'
+                    sourceValue: '../images/sunset.png'
                 }
             }
         }
@@ -191,19 +191,19 @@ Item {
                 IconTextComp {
                     id: firstITC
                     textValue: ''
-                    sourceValue: 'images/humudity.png'
+                    sourceValue: '../images/humudity.png'
                     anchors.left: bottomLayer.left
                 }
                 IconTextComp {
                     id: secondITC
                     textValue: ''
-                    sourceValue: 'images/wind.png'
+                    sourceValue: '../images/wind.png'
                     anchors.right: bottomLayer.right
                 }
                 IconTextComp {
                     id: thirdITC
                     textValue: ''
-                    sourceValue: 'images/cloudiness.png'
+                    sourceValue: '../images/cloudiness.png'
                     anchors.centerIn: bottomLayer
                 }
             }
@@ -244,9 +244,25 @@ Item {
         function onCountryData(country) {
             countryText.text = country
         }
-        function onSunData(value) {
-            sunRise.textValue = value[0]
-            sunDown.textValue = value[1]
+        function onSunData(values){
+            function convertUnixToTimeZone(unixTimestamp, timeZone) {
+                let date = new Date(unixTimestamp * 1000);
+                date.setMinutes(date.getMinutes() + date.getTimezoneOffset() + timeZone * 60);
+                return date;
+            }
+
+            function getHoursAndMinutes(date) {
+                let hours = date.getHours().toString().padStart(2, '0'); // Ensure two digits, pad with leading 0 if needed
+                let minutes = date.getMinutes().toString().padStart(2, '0');
+                return `${hours}:${minutes}`;
+            }
+
+            let sunrise = getHoursAndMinutes(convertUnixToTimeZone(values[0],3))
+            let sundown = getHoursAndMinutes(convertUnixToTimeZone(values[1],3))
+
+            sunRise.textValue = sunrise
+            sunDown.textValue = sundown
+
         }
     }
 }

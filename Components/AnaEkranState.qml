@@ -91,13 +91,13 @@ Item {
         onTriggered: {
             if (bgState.state === 'first') {
                 bgState.state = 'second'
-                console.log('second')
+                
             } else if (bgState.state === 'second') {
                 bgState.state = 'third'
-                console.log('third')
+                
             } else {
                 bgState.state = 'first'
-                console.log('first')
+                
             }
         }
     }

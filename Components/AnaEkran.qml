@@ -1,6 +1,6 @@
 import QtQuick
 import QtQuick.Controls
-import "../variable.js" as Global
+import "variable.js" as Global
 
 Item {
     AnaEkranState {
@@ -10,7 +10,6 @@ Item {
     }
     Keys.onPressed: event => {
                         if (event.key === Qt.Key_Shift) {
-                            console.log(textCityInput.text)
                             Global.cityName = textCityInput.text
                             mainStack.push('main.qml')
                         }
@@ -22,7 +21,7 @@ Item {
         id: bgImage
         width: parent.width
         height: parent.height
-        source: 'images/prague.jpg'
+        source: '../images/prague.jpg'
         Rectangle {
             width: parent.width
             height: parent.height
@@ -34,7 +33,7 @@ Item {
         id: bgImage1
         width: parent.width
         height: parent.height
-        source: 'images/budapest.jpg'
+        source: '../images/budapest.jpg'
         Rectangle {
             width: parent.width
             height: parent.height
@@ -46,7 +45,7 @@ Item {
         id: bgImage2
         width: parent.width
         height: parent.height
-        source: 'images/istanbul.jpg'
+        source: '../images/istanbul.jpg'
         Rectangle {
             width: parent.width
             height: parent.height
@@ -143,7 +142,6 @@ Item {
             }
         }
         onClicked: {
-            console.log(textCityInput.text)
             Global.cityName = textCityInput.text
             mainStack.push('main.qml')
         }

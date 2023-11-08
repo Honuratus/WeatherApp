@@ -27,7 +27,6 @@ class Backend(QObject):
 
     @Slot(str)
     def update_data(self,city):
-        print(city)
         params = {
                    "q": city,
                    "appid": self.api_key,
@@ -50,19 +49,9 @@ class Backend(QObject):
         sun_data.append(response_data['sys']['sunrise'])
         sun_data.append(response_data['sys']['sunset'])
 
-        sunRise = sun_data[0]
-        sunRise = datetime.datetime.utcfromtimestamp(sunRise)
-        sunRise_format = sunRise.strftime('%Y-%m-%d %H:%M:%S').split(' ')[-1][:5]
-
-        sunset = sun_data[1]
-        sunset = datetime.datetime.utcfromtimestamp(sunset)
-        sunset_format = sunset.strftime('%Y-%m-%d %H:%M:%S').split(' ')[-1][:5]
-
-        print("Converted Date and Time:", sunRise_format,sunset_format)
 
 
-        sun_data[0] = sunRise_format
-        sun_data[1] = sunset_format
+
 
         self.weatherData.emit(weather_data_values)
         self.mainData.emit(main_data_values)
